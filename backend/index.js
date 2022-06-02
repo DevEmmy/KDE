@@ -16,7 +16,8 @@ const app = express();
 app.use(cors())
 
 
-const uri = process.env.DB_URI || "mongodb://localhost:27017/kde"
+const uri = process.env.DB_URI
+// "mongodb://localhost:27017/kde"
 
 mongoose.connect(uri, {useNewUrlParser: true, useUnifiedTopology: true});
 app.use(bodyParser.json({limit:"30mb", extended: true}));
