@@ -9,7 +9,7 @@ function SignUp({func}) {
     const passwordRef = useRef(null)
 
     const signUp = async ()=>{
-        axios.post('http://localhost:5555/auth/signup', {
+        axios.post('https://kde-api.herokuapp.com/auth/signup', {
             fullName: fullNameRef.current.value,
             email: emailRef.current.value,
             password: passwordRef.current.value

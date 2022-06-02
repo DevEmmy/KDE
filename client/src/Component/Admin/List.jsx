@@ -7,7 +7,7 @@ function List({list}) {
 
     const deleteListing = async ()=>{
         window.location.reload()
-        await axios.delete(`http://localhost:5555/listing/${list._id}`)
+        await axios.delete(`https://kde-api.herokuapp.com/listing/${list._id}`)
         .then(resp => {
             console.log(resp.data)
         })

@@ -10,13 +10,13 @@ function AddListing() {
     const [sub,setSub] = useState([])
 
     const getCategories = async ()=>{
-        await axios.get("http://localhost:5555/category/")
+        await axios.get("https://kde-api.herokuapp.com/category/")
         .then(resp => setCat(resp.data))
         .catch(err => console.log(err))
     }
     
     const getSubCategory = async ()=>{
-        await axios.get("http://localhost:5555/sub-category")
+        await axios.get("https://kde-api.herokuapp.com/sub-category")
         .then(resp => setSub(resp.data))
         .catch(err => console.log(err))
     }

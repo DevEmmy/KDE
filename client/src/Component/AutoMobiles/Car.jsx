@@ -12,7 +12,7 @@ function Car() {
     const [cat, setCat] = useState()
 
     const fetchListing = async ()=>{
-        await axios.get(`http://localhost:5555/listing/${title}`)
+        await axios.get(`https://kde-api.herokuapp.com/listing/${title}`)
         .then(resp =>setListing(resp.data))
         .catch(err=> console.log(err))
       }

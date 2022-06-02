@@ -11,7 +11,7 @@ function ListingCompo() {
   const [allListings, setAllListings ] = useState()
 
   const getListings = async ()=>{
-    await axios.get("http://localhost:5555/listing/")
+    await axios.get("https://kde-api.herokuapp.com/listing/")
     .then((resp) => setAllListings(resp.data))
     .catch(err => console.log(err))
   }

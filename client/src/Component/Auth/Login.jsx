@@ -14,7 +14,7 @@ function Login({func}) {
     const passwordRef = useRef(null)
 
     const getProfile = async ()=>{
-        await axios.get('http://localhost:5555/auth/profile', { headers: {
+        await axios.get('https://kde-api.herokuapp.com/auth/profile', { headers: {
           'content-type' : "application/json",
           'authorization' : `Bearer ${localStorage.getItem('token')}`
         }
@@ -31,7 +31,7 @@ function Login({func}) {
       }
 
     const logIn = async ()=>{
-        axios.post('http://localhost:5555/auth/signin', {
+        axios.post('https://kde-api.herokuapp.com/auth/signin', {
             email: emailRef.current.value,
             password: passwordRef.current.value
         })

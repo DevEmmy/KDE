@@ -20,13 +20,13 @@ function Automobiles() {
   }
 
   const fetchCategory = async ()=>{
-    await axios.get('http://localhost:5555/category/cars')
+    await axios.get('https://kde-api.herokuapp.com/category/cars')
     .then(resp=> setCat(resp.data[0]))
     .catch(err=> console.log(err))
   }
 
   const fetchListing = async ()=>{
-    await axios.get('http://localhost:5555/listing/category/62895e99f41d6461d48743ba')
+    await axios.get('https://kde-api.herokuapp.com/listing/category/62895e99f41d6461d48743ba')
     .then(resp =>setListing(resp.data))
     .catch(err=> console.log(err))
   }

@@ -21,13 +21,13 @@ function MainRealEstate() {
   }
 
   const fetchCategory = async ()=>{
-    await axios.get('http://localhost:5555/category//real-estate')
+    await axios.get('https://kde-api.herokuapp.com/category//real-estate')
     .then(resp=> setCat(resp.data[0]))
     .catch(err=> console.log(err))
   }
 
   const fetchListing = async ()=>{
-    await axios.get('http://localhost:5555/listing/category/62989c57f207d89226162e4b')
+    await axios.get('https://kde-api.herokuapp.com/listing/category/62989c57f207d89226162e4b')
     .then(resp =>setListing(resp.data))
     .catch(err=> console.log(err))
   }

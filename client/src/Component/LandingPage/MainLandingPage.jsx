@@ -18,13 +18,13 @@ function MainLandingPage() {
     const [categories, setCategories] = useState([])
 
     const fetchSiteMedia = async()=>{
-        await axios.get('http://localhost:5555/site-media')
+        await axios.get('https://kde-api.herokuapp.com/site-media')
         .then(resp=> setMedia(resp.data[0]))
         .catch(err => console.log(err))
     }
 
     const fetchCategories = async()=>{
-        await axios.get('http://localhost:5555/category')
+        await axios.get('https://kde-api.herokuapp.com/category')
         .then(resp => setCategories(resp.data))
         .catch(err => console.log(err))
     }

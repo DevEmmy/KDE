@@ -10,7 +10,7 @@ function Latest() {
     const navigate = useNavigate()
 
     const fetchListing = async ()=>{
-        await axios.get('http://localhost:5555/listing')
+        await axios.get('https://kde-api.herokuapp.com/listing')
         .then(resp =>setListing(resp.data))
         .catch(err=> console.log(err))
       }
