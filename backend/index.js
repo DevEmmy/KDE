@@ -14,34 +14,33 @@ require('dotenv').config()
 const { mongoose } = require('mongoose')
 
 const app = express();
-// app.use(cors())
+app.use(cors())
 
 
-// const uri = process.env.DB_URI
-// // "mongodb://localhost:27017/kde"
+const uri = process.env.DB_URI
+// "mongodb://localhost:27017/kde"
 
-// mongoose.connect(uri, {useNewUrlParser: true, useUnifiedTopology: true});
-// app.use(bodyParser.json({limit:"30mb", extended: true}));
-// app.use(bodyParser.urlencoded({limit:"30mb", extended: false}));
+mongoose.connect(uri, {useNewUrlParser: true, useUnifiedTopology: true});
+app.use(bodyParser.json({limit:"30mb", extended: true}));
+app.use(bodyParser.urlencoded({limit:"30mb", extended: false}));
 
-// const connection = mongoose.connection
-// connection.once('open', ()=>{console.log('Database running Successfully')})
+const connection = mongoose.connection
+connection.once('open', ()=>{console.log('Database running Successfully')})
 
-// app.use(bodyParser.json({limit:"30mb", extended: true}));
-// app.use(bodyParser.urlencoded({limit:"30mb", extended: false}));
+app.use(bodyParser.json({limit:"30mb", extended: true}));
+app.use(bodyParser.urlencoded({limit:"30mb", extended: false}));
 
-// // Routes
-// app.use('/blog',blogRouter)
-// app.use('/category', categoryRouter)
-// app.use('/listing', listingRouter)
-// app.use('/location', locationRouter)
-// app.use('/message', messageRouter)
-// app.use('/site-media', siteMediaRouter)
-// app.use('/sub-category', subCategoryRouter)
-// app.use('/auth', userRouter)
-// app.send("<h1>Hello World</h1>")
+// Routes
+app.use('/blog',blogRouter)
+app.use('/category', categoryRouter)
+app.use('/listing', listingRouter)
+app.use('/location', locationRouter)
+app.use('/message', messageRouter)
+app.use('/site-media', siteMediaRouter)
+app.use('/sub-category', subCategoryRouter)
+app.use('/auth', userRouter)
 
 
-const port = process.env.PORT || 4444;
+const port = 5555
 
 app.listen(port, ()=>{console.log(`Port ${port} is running`)})
