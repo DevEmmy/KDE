@@ -110,7 +110,7 @@ width: 90%;
 .head-nav{
   position: absolute;
   z-index: 9999999;
-  background: black;
+  background: #FFD700;
   width: 100%;
   height: 100vh;
   color: white;

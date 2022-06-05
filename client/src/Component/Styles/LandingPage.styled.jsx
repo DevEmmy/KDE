@@ -127,7 +127,7 @@ export const NewsLetterContainer = styled.div`
       }
       
       .newsLetter_form > input[type="button"]{
-        background-color: black;
+        background-color: #FFD700;
         color: white;
         border: none;
       }
@@ -293,12 +293,64 @@ display: grid;
     .submit_message{
         padding: 12px 20px;
         text-align: center;
-        background-color: black;
+        background-color: #FFD700;
         color: white;
         cursor: pointer;
     }
 
     @media only screen and (max-width: 500px){
         width: 100%;
+    }
+`
+
+export const AboutContainer = styled.div`
+    text-align: center;
+    width: 70%;
+    margin: 100px auto;
+
+    .members{
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        gap: 30px;
+    }
+
+    .member{
+        background-color: white;
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow:  0 0 20px rgba(0,0,0,0.23);
+    }
+
+    .member img{
+        width:200px;
+        height: 200px;
+        border-radius: 50%;
+        object-fit: cover;
+    
+    }
+
+    .text_content p{
+       margin-top: -20px;
+    }
+
+    @media only screen and (max-width: 500px) {
+        width: 90%;
+        margin: 0px auto;
+        .members{
+            display: flex;
+            flex-direction: column;
+        }
+
+        .member{
+            width: 90%;
+            margin: 0 auto;
+        }
+
+        .member img{
+            width: 130px;
+            height: 130px;
+            box-sizing: border-box;
+        }
+        
     }
 `

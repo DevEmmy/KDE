@@ -1,7 +1,10 @@
 import { SaveAsIcon, SaveIcon } from '@heroicons/react/solid'
 import axios from 'axios'
-import React, { useEffect, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
+import { useDispatch } from 'react-redux'
 import { useParams } from 'react-router-dom'
+import { FunctionsApi } from '../../store/FunctionsApi'
+import { addUser } from '../../store/userSlice'
 import { info } from '../Assets/Details/info'
 import Footer from '../LandingPage/Footer'
 import Nav from '../Navigator/Nav'
@@ -9,18 +12,35 @@ import { BannerContainer, BookSection, LandingPageContainer } from '../Styles/La
 import { ListingDetails, RealEstatePageContainer } from '../Styles/RealEstate.styled'
 
 function RealEstate() {
-
+    const {api} = useContext(FunctionsApi)
     const [listing, setListing ] = useState()
     const { title } = useParams()
     const [cat, setCat] = useState()
+    const dispatch = useDispatch()
 
     const fetchListing = async ()=>{
-        await axios.get(`https://kde-api.herokuapp.com/listing/${title}`)
+        await axios.get(`${api}/listing/${title}`)
         .then(resp =>setListing(resp.data))
         .catch(err=> console.log(err))
       }
       
       useEffect(()=> {fetchListing()}, [])
+
+      const saveListing = async (listing)=>{
+          await axios.put(`${api}/auth/`,{
+              listing
+          }, { headers: {
+            'content-type' : "application/json",
+            'authorization' : `Bearer ${localStorage.getItem('token')}`
+          }
+          })
+          .then(resp=> {
+            dispatch(addUser(resp.data))
+            const item = JSON.stringify(resp.data)
+            localStorage.setItem("user", item)
+          })
+          .catch(err => console.log(err))
+      }
   return (
     <RealEstatePageContainer>
         <Nav/>
@@ -35,7 +55,7 @@ function RealEstate() {
       </BannerContainer>
 
       <ListingDetails>
-            <div className="save_list">
+            <div className="save_list" onClick={()=> saveListing(listing)}>
                 <SaveAsIcon width={18}/> save
             </div>
 

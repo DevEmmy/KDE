@@ -65,7 +65,7 @@ function App() {
       <Route path="/about" element={<About />} />
       <Route path="/combo-deals" element={<ComboDeals />} />
       <Route path="/yatch" element={<Yatch />} />
-      <Route path="/jet" element={<Jets />} />
+      <Route path="/jets" element={<Jets />} />
       <Route path="/auth" element={<MainAuth />} />
       <Route path="/listing/:title" element={<RealEstate />} />
       <Route path="/latest" element={<Latest />} />

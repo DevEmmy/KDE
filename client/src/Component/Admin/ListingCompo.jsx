@@ -1,17 +1,19 @@
-import React, { useEffect, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import axios from "axios"
 import { AdminContainer, ListingCompoContainer } from '../Styles/Admin.styled'
 import List from './List'
 import AdminLeft from "./AdminLeft"
 import AddListing from './AddListing'
+import { FunctionsApi } from '../../store/FunctionsApi'
 
 
 function ListingCompo() {
 
   const [allListings, setAllListings ] = useState()
+  const {api} = useContext(FunctionsApi)
 
   const getListings = async ()=>{
-    await axios.get("https://kde-api.herokuapp.com/listing/")
+    await axios.get(`${api}/listing/`)
     .then((resp) => setAllListings(resp.data))
     .catch(err => console.log(err))
   }

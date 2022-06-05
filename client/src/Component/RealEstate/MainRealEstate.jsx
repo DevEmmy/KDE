@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import { info } from '../Assets/Details/info'
 import WebNav from '../Navigator/WebNav'
 import { BannerContainer, FooterContainer, NewsLetterContainer } from '../Styles/LandingPage.styled'
@@ -9,8 +9,10 @@ import Nav from '../Navigator/Nav'
 import Footer from '../LandingPage/Footer'
 import axios from 'axios'
 import { useNavigate } from 'react-router-dom'
+import { FunctionsApi } from '../../store/FunctionsApi'
 
 function MainRealEstate() {
+  const {api} = useContext(FunctionsApi)
   const [listing, setListing] = useState()
   const [filter, setFilter] = useState('All')
   const [cat, setCat] = useState()
@@ -21,13 +23,13 @@ function MainRealEstate() {
   }
 
   const fetchCategory = async ()=>{
-    await axios.get('https://kde-api.herokuapp.com/category//real-estate')
+    await axios.get(`${api}/category/real-estate`)
     .then(resp=> setCat(resp.data[0]))
     .catch(err=> console.log(err))
   }
 
   const fetchListing = async ()=>{
-    await axios.get('https://kde-api.herokuapp.com/listing/category/62989c57f207d89226162e4b')
+    await axios.get(`${api}/listing/category/6288f73dfc956e3c259cadc8`)
     .then(resp =>setListing(resp.data))
     .catch(err=> console.log(err))
   }

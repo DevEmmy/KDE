@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import { info } from '../Assets/Details/info'
 import WebNav from '../Navigator/WebNav'
 import { BannerContainer, FooterContainer, LandingPageContainer, NewsLetterContainer } from '../Styles/LandingPage.styled'
@@ -9,22 +9,24 @@ import { MenuAlt3Icon } from '@heroicons/react/solid'
 import Nav from '../Navigator/Nav'
 import Footer from './Footer'
 import axios from 'axios'
+import { FunctionsApi } from '../../store/FunctionsApi'
 
 
 function MainLandingPage() {
 
+    const {api} = useContext(FunctionsApi)
     const navigate = useNavigate()
     const [media,setMedia] = useState()
     const [categories, setCategories] = useState([])
 
     const fetchSiteMedia = async()=>{
-        await axios.get('https://kde-api.herokuapp.com/site-media')
+        await axios.get(`${api}/site-media`)
         .then(resp=> setMedia(resp.data[0]))
         .catch(err => console.log(err))
     }
 
     const fetchCategories = async()=>{
-        await axios.get('https://kde-api.herokuapp.com/category')
+        await axios.get(`${api}/category`)
         .then(resp => setCategories(resp.data))
         .catch(err => console.log(err))
     }

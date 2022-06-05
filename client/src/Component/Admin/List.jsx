@@ -1,13 +1,15 @@
 import { PencilIcon, TrashIcon } from '@heroicons/react/solid'
 import axios from 'axios'
-import React from 'react'
+import React, { useContext } from 'react'
+import { FunctionsApi } from '../../store/FunctionsApi'
 import { ListContainer, MainListContainer } from '../Styles/Admin.styled'
 
 function List({list}) {
+    const {api} = useContext(FunctionsApi)
 
     const deleteListing = async ()=>{
         window.location.reload()
-        await axios.delete(`https://kde-api.herokuapp.com/listing/${list._id}`)
+        await axios.delete(`${api}/${list._id}`)
         .then(resp => {
             console.log(resp.data)
         })

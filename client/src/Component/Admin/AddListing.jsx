@@ -1,22 +1,23 @@
-import React, { useEffect, useRef, useState } from 'react'
+import React, { useContext, useEffect, useRef, useState } from 'react'
 import { AddListingContainer } from '../Styles/Admin.styled'
 import FileBase64 from 'react-file-base64'
 import axios from 'axios'
+import { FunctionsApi } from '../../store/FunctionsApi'
 
 function AddListing() {
 
-    
+    const api = useContext(FunctionsApi)
     const [categories, setCat ] = useState([])
     const [sub,setSub] = useState([])
 
     const getCategories = async ()=>{
-        await axios.get("https://kde-api.herokuapp.com/category/")
+        await axios.get(`${api}/category/`)
         .then(resp => setCat(resp.data))
         .catch(err => console.log(err))
     }
     
     const getSubCategory = async ()=>{
-        await axios.get("https://kde-api.herokuapp.com/sub-category")
+        await axios.get(`${api}/sub-category`)
         .then(resp => setSub(resp.data))
         .catch(err => console.log(err))
     }
@@ -41,7 +42,8 @@ function AddListing() {
             price: priceRef.current.value,
         }
         
-        await axios.post("http://localhost:5555/listing/", post)
+        
+        await axios.post(`${api}/listing/`, post)
         .then((resp)=> console.log(resp))
         .catch(err => console.log(err))
     }
@@ -58,7 +60,7 @@ function AddListing() {
             <input type="text" ref={titleRef} placeholder='title' />
             <textarea name="" placeholder='description'ref={descRef}/>
             <input type="text" placeholder='price' ref={priceRef}/>
-            <select name="" id="" placeholder='Category' ref={categoryRef}>
+            {/* <select name="" id="" placeholder='Category' ref={categoryRef}>
                 {categories?.map((cat, i)=>{
                     return(
                         <option key={i} ref={categoryRef} value={cat._id}>
@@ -78,7 +80,7 @@ function AddListing() {
                         )
                     })
                 }
-            </select>
+            </select> */}
             <FileBase64
                 multiple={false}
                 type='image'

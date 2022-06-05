@@ -12,7 +12,7 @@ export const ListingDetails = styled.div`
     /* display: inline-block; */
     padding: 14px 20px;
     border-radius: 36px;
-    background-color: black;
+    background-color: #FFD700;
     color: white;
     display: inline-flex;
     align-items: center;
@@ -75,7 +75,7 @@ margin: 50px auto;
   }
   
   .filter:hover{
-    background-color: rgb(0,0,0);
+    background-color: #FFD700;
     color: white;
   }
   

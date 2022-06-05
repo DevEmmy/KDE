@@ -20,8 +20,9 @@ function WebNav() {
                     return(
                         <div key={i} className="items" onClick={()=>navigate(`${item.link}`)}>
                             {
-                               user && item.id === 8 ? user.firstName : item.title
+                               user && item.id === 8 ? user.fullName  : item.title
                             }
+                            {/* {item.title} */}
                         </div>
                     )
                 })

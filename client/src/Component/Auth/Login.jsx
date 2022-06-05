@@ -1,12 +1,13 @@
-import React, { useRef } from 'react'
+import React, { useContext, useRef } from 'react'
 import { AuthButton, AuthContainer } from '../Styles/Auth.styled'
 import axios from 'axios'
 import { useNavigate } from 'react-router-dom'
 import { useDispatch } from 'react-redux'
 import { addUser } from '../../store/userSlice'
+import { FunctionsApi } from '../../store/FunctionsApi'
 
 function Login({func}) {
-
+    const {api} = useContext(FunctionsApi)
     const navigate = useNavigate()
     const dispatch = useDispatch()
 
@@ -14,7 +15,7 @@ function Login({func}) {
     const passwordRef = useRef(null)
 
     const getProfile = async ()=>{
-        await axios.get('https://kde-api.herokuapp.com/auth/profile', { headers: {
+        await axios.get(`${api}/auth/profile`, { headers: {
           'content-type' : "application/json",
           'authorization' : `Bearer ${localStorage.getItem('token')}`
         }
@@ -31,7 +32,7 @@ function Login({func}) {
       }
 
     const logIn = async ()=>{
-        axios.post('https://kde-api.herokuapp.com/auth/signin', {
+        axios.post(`${api}/auth/signin`, {
             email: emailRef.current.value,
             password: passwordRef.current.value
         })

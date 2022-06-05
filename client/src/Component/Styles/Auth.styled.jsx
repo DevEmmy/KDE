@@ -35,7 +35,7 @@ export const AuthContainer = styled.div`
 export const AuthButton = styled.div`
     /* width: 100%; */
     padding: 12px 10px;
-    background: rgb(240,100,100);
+    background: #FFD700;
     color: white;
     text-align: center;
     border-radius: 6px;

@@ -1,15 +1,16 @@
-import React, { useRef } from 'react'
+import React, { useContext, useRef } from 'react'
 import { AuthButton, AuthContainer } from '../Styles/Auth.styled'
 import axios from 'axios'
+import { FunctionsApi } from '../../store/FunctionsApi'
 
 function SignUp({func}) {
-
+    const {api} = useContext(FunctionsApi)
     const fullNameRef = useRef(null)
     const emailRef = useRef(null)
     const passwordRef = useRef(null)
 
     const signUp = async ()=>{
-        axios.post('https://kde-api.herokuapp.com/auth/signup', {
+        axios.post(`${api}/auth/signup`, {
             fullName: fullNameRef.current.value,
             email: emailRef.current.value,
             password: passwordRef.current.value
